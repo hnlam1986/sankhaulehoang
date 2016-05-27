@@ -1,0 +1,261 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="TGSKBakup.Master.cs" Inherits="TheGioiSanKhau.TGSK" %>
+
+<%@ Import Namespace="Microsoft.AspNet.FriendlyUrls" %>
+<%@ Register Src="ctrl/TopNav.ascx" TagName="TopNav" TagPrefix="uc1" %>
+<%@ Register Src="ctrl/TopQuangCao.ascx" TagName="TopQuangCao" TagPrefix="uc2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>San Khau Le Hoang</title>
+    <link href="~/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/bootstrap-theme.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" media="all" type="text/css" href="~/Styles/hover_drop_2.css" />
+    <script type="text/javascript" src="/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery.corner.js"></script>
+    <script src="/Scripts/iefix.js" type="text/javascript"></script>
+    <script src="/Scripts/JSUtilities.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/Scripts/jquery.scrollbox.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+    @media only screen and (max-width: 1340px)
+    {
+        #qcLeft, #qcRight
+        {
+            display: none!important;
+        }
+        .qcfloat
+        {
+            width: 0!important;
+        }
+        .main-content
+        {
+            width: 1000px!important;
+        }
+    }
+    @media only screen and (device-width: 768px) and (orientation: landscape)
+    {
+        #qcLeft, #qcRight
+        {
+            display: none!important;
+        } 
+        .qcfloat
+        {
+            width: 0!important;
+        }   
+        .main-content
+        {
+            width: 1000px!important;
+        }
+    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px)
+    {
+        #qcLeft, #qcRight
+        {
+            display: none!important;
+        }    
+        .qcfloat
+        {
+            width: 0!important;
+        }
+        .main-content
+        {
+            width: 1000px!important;
+        }
+    }
+    </style>
+</head>
+<body onload="ieFix('menu')">
+    <!--[if IE 7]><div class="ie7"><![endif]-->
+    <!--[if IE 8]><div class="ie8"><![endif]-->
+    <form id="form1" runat="server">
+    <div class="main-content">
+    <table>
+        <tr>
+            <td style="width: 175px" class="qcfloat"> 
+            <div id="qcLeft" style="width: 170px; position: fixed; top: 0px;" runat="server"
+                visible="false">
+                <asp:ImageButton ID="ImageButtonleft" runat="server" PostBackUrl="#" Style="width: 170px" />
+            </div>
+            </td>
+            <td style="width: 1000px">
+            <div class="TGSK-Header">
+           
+            
+            <div class="header-grey-bar">
+                <table>
+                    <tr>
+                        <td>
+                            <a href="#">
+                                <div class="header-grey-bar-button">
+                                    Gửi bài viết</div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <div class="header-grey-bar-button">
+                                    Gửi hình ảnh</div>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#">
+                                <div class="header-grey-bar-button">
+                                    Gửi video</div>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="TGSK-logo">
+                <a href="/default.aspx">
+                    <img src="/images/logo.jpg" />
+                </a>
+            </div>
+            <div class="TGSK-logo" style="margin: 3px 0px 5px 0px; overflow: hidden">
+                <uc2:TopQuangCao ID="TopQuangCao1" runat="server" />
+            </div>
+            <div class="TGSK-Nav">
+                <%--<div style="position: absolute;width: 100%">
+            <div class="floating-banner" style="width: 100%;height: 250px;background-color: red;">
+        <asp:ImageButton ID="ImageButtonleft" runat="server" PostBackUrl="#" style="float: left"/>
+        <asp:ImageButton ID="ImageButtonRight" runat="server" PostBackUrl="#" style="float: right"/>
+    </div></div>--%>
+                <uc1:TopNav ID="TopNav1" runat="server" />
+            </div>
+            </div>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="TGSK-footer  mt10">
+                <div class="yellow-footer">
+                    <div class="yellow-bar-footer">
+                        <span class="text-logo">thegioisankhau.com</span> Chuyên trang tin tức nghệ sỹ sân
+                        khấu - cải lương độc quyền
+                    </div>
+                    <%-- temporary !--%>
+                    <div class=" mt10" style="text-align: center">
+                        <b>CÔNG TY TNHH MTV TM-DV MINH HOÀNG CHƯƠNG</b>
+                        <br />
+                        <b>MST:</b> 0307 781 762<br />
+                        <b>Địa chỉ:</b> 220/95 Lê Văn Sỹ, P.14, Q.3, TP.HCM<br />
+                        <b>Email:</b> minhhoangphoto@gmail.com<br />
+                        <b>Hotline:</b> 0938 82 68 48 | 0903 18 18 65
+                        <br />
+                        <b>Website:</b> minhhoangphoto.net | thegioisankhau.com
+                    </div>
+                    <%-- temporary !--%>
+                    <%--<div class="footer-address mt10">
+                        <b>CÔNG TY TNHH MTV TM-DV MINH HOÀNG CHƯƠNG</b>
+                        <br />
+                        <b>MST:</b> 0307 781 762<br />
+                        <b>Địa chỉ:</b> 220/95 Lê Văn Sỹ, P.14, Q.3, TP.HCM<br />
+                        <b>Email:</b> minhhoangphoto@gmail.com<br />
+                        <b>Điện thoại:</b> 08 3846 7804<br />
+                        <b>Hotline:</b> 0938 82 68 48 | 0903 18 18 65
+                        <br />
+                        <b>Website:</b> minhhoangphoto.net | thegioisankhau.com
+                    </div>
+                    <div class="lien-ket mt10">
+                        
+                        <uc2:LienKetWebSite ID="LienKetWebSite1" runat="server" />
+                        
+                    </div>
+                    <div class="cap-nhat mt10">
+                        
+                        <uc3:CapNhatTinTuc ID="CapNhatTinTuc1" runat="server" />
+                        
+                    </div>--%>
+                </div>
+                <div class="grey-footer">
+                    Website thuộc quyền sở hữu của Studio Minh Hoàng <b><span class="yellow-text">&#9679;</span></b>
+                    Phát triển bởi ML Media <b><span class="yellow-text">&#9679;</span></b> 05/2014
+                </div>
+            </div>
+            </td>
+            <td style="width: 175px" class="qcfloat">
+            <div id="qcRight" style="width: 170px; position: fixed; top: 0px;" runat="server"
+                visible="false">
+                <asp:ImageButton ID="ImageButtonRight" runat="server" PostBackUrl="#" Style="width: 170px" />
+            </div>
+            </td>
+        </tr>
+    </table>
+        
+        </div>
+    </form>
+    <!--[if IE 7]></div><![endif]-->
+    <!--[if IE 8]></div><![endif]-->
+    <script>
+        
+        $(document).ready(function () {
+//            var widthScreen = screen.width;
+//        $("#qcRight").css("left",(widthScreen-170-getScrollBarWidth())+"px");
+            $(".nav-item").corner("bevel top 4px");
+            $(".nav-first-item").corner("bevel tr 4px");
+            $(".nav-last-item").corner("bevel tl 4px");
+            if($("#form1").attr("action")=="default.aspx") {
+                $("#nav0").addClass("active");
+            }else if($("#form1").get(0).baseURI.indexOf("/NewsList/")>0) {
+                var seg = new Array();
+                <% foreach (var segment in Request.GetFriendlyUrlSegments()) { %>
+                var id = '<%: segment %>' ;
+                if(!isNaN(id)) {
+                    seg.push( '<%: segment %>' );
+                }
+                <% } %>
+                $(".active").removeClass("active");
+                for (var i = 0; i < seg.length; i++) {
+                    if(seg[i]!=undefined) {
+                        $("#nav" + seg[i]).addClass("active");
+                    }
+                }
+            }
+            $("img").bind("contextmenu",function(){
+                return false;
+            });
+        });
+    //-----------------------------------------------------------------//
+  function getScrollBarWidth () {
+  var inner = document.createElement('p');
+  inner.style.width = "100%";
+  inner.style.height = "200px";
+
+  var outer = document.createElement('div');
+  outer.style.position = "absolute";
+  outer.style.top = "0px";
+  outer.style.left = "0px";
+  outer.style.visibility = "hidden";
+  outer.style.width = "200px";
+  outer.style.height = "150px";
+  outer.style.overflow = "hidden";
+  outer.appendChild (inner);
+
+  document.body.appendChild (outer);
+  var w1 = inner.offsetWidth;
+  outer.style.overflow = 'scroll';
+  var w2 = inner.offsetWidth;
+  if (w1 == w2) w2 = outer.clientWidth;
+
+  document.body.removeChild (outer);
+
+  return (w1 - w2);
+};
+
+    </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+  m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-52133834-1', 'thegioisankhau.com');
+        ga('send', 'pageview');
+
+</script>
+</body>
+</html>

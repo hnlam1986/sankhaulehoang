@@ -1,0 +1,7 @@
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\bin\TheGioiSanKhau.dll
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\bin\TheGioiSanKhau.pdb
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\bin\Microsoft.Web.Infrastructure.dll
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\bin\Microsoft.Web.Infrastructure.xml
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\obj\Release\TheGioiSanKhau.dll
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\obj\Release\TheGioiSanKhau.pdb
+D:\Lam Huynh\GitHub\sankhaulehoang\Source\obj\Release\SanKhauLeHoang.csprojResolveAssemblyReference.cache
