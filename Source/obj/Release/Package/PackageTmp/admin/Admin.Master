@@ -9,8 +9,10 @@
     <link href="Style/admin.css" rel="stylesheet" type="text/css" />
     <link href="Style/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/admin/Style/jquery-ui-1.10.4.custom.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/Style/magnific-popup.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery.js"></script>
     <script type="text/javascript" src="/admin/Scripts/jquery-ui-1.10.4.custom.js"></script>
+    <script type="text/javascript" src="/admin/Scripts/lightbox.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

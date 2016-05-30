@@ -162,7 +162,7 @@ namespace TheGioiSanKhau
                 paramParentNodeID.Value = cateId;
                 DataSet ds = DataAccessLayer.ExecuteDataSet("News_GetNewsByCategoryId", paramParentNodeID);
                 StringBuilder html = new StringBuilder();
-                string start_template = "<table id=\"tblNews\" class=\"custom-table\">" +
+                string start_template = "<table id=\"tblNews\" class=\"custom-table\" {1}>" +
                                         "<thead><tr>" +
                                         "<td>Tiêu Đề</td>" +
                                         "<td>Ngày Đăng</td>" +
@@ -200,22 +200,51 @@ namespace TheGioiSanKhau
                                       "</td>" +
                                       "</tr></tfoot></table>";
                 StringBuilder sb = new StringBuilder();
-                start_template = string.Format(start_template, cateId);
-                end_template = string.Format(end_template, cateId);
+                string start = ""; 
+                string end = string.Format(end_template, cateId);
+                int index = 0;
+                int page_index = 0;
                 if (ds != null && ds.Tables != null && ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow dataRow in ds.Tables[0].Rows)
                     {
+                        if (index == 0)
+                        {
+                            page_index++;
+                            if (page_index > 1)
+                            {
+                                start = string.Format(start_template, cateId, "data-paging='" + page_index + "' style='display:none'");
+                            }
+                            else
+                            {
+                                start = string.Format(start_template, cateId, "data-paging='" + page_index +"'");
+                            }
+                            sb.Append(start);
+                        }
+                        
                         string id = dataRow["NewsID"].ToString();
                         string title = dataRow["NewsTitle"].ToString();
                         string posted_date = dataRow["PostedDate"].ToString();
                         string newsImage = dataRow["ThumnailImagePath"].ToString();
                         string formatTitle = string.Format("<a href='/NewsDetail/{0}/{1}'>{2}<a>", Utilities.ConvertUnicodeToAscii(title), id, title);
                         sb.AppendLine(string.Format(item_template, formatTitle, posted_date, id, newsImage));
+                        index++;
+                        if (index == 10)
+                        {
+                            sb.Append(end);
+                            index = 0;
+                        }
                     }
+                    if (index < 10 && index >0)
+                    {
+                        sb.Append(end);
+                        index = 0;
+                    }
+                    string pgNews = "<div class='divPgNews'>" + Utilities.BuildPaging("pgNews", "NewsCategoryManagementEvent.SelectedPage", page_index) + "</div>";
+                    sb.Append(pgNews);
+                    Response.Write(sb.ToString());
                 }
-                string result = start_template + sb.ToString() + end_template;
-                Response.Write(result);
+                
             }
         }
         private void UpdateOrder()

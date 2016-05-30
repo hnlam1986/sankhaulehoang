@@ -14,7 +14,8 @@ namespace TheGioiSanKhau
         public static string GetTempleAdvItem(bool isRefresh = false)
         {
             string template = "<td>" +
-                        "<img src='/AdvImage/{0}' style='max-width:100px'/>" +
+                        "<a class='image-popup-no-margins' href='/AdvImage/{0}'>" +
+                        "<img src='/AdvImage/{0}' style='max-width:100px;max-height:50px'/></a>" +
                         "</td>" +
                         "<td>{1}</td>" +
                         "<td>{2}</td>" +
@@ -35,7 +36,8 @@ namespace TheGioiSanKhau
         public static string GetTempleShowItem(bool isRefresh = false)
         {
             string template = "<td>" +
-                        "<img src='/AdvImage/{0}' style='max-width:100px'/>" +
+                        "<a class='image-popup-no-margins' href='/AdvImage/{0}'>" +
+                        "<img src='/AdvImage/{0}' style='max-width:100px;max-height:50px'/></a>" +
                         "</td>" +
                         "<td>{4}</td>" +
                         "<td>{1}</td>" +
@@ -77,6 +79,33 @@ namespace TheGioiSanKhau
         {
             SqlParameter param = new SqlParameter("LogDes",logDes);
             DataAccessLayer.ExcuteNoneQuery("Logs_InsertLog", param);
+        }
+
+        public static string BuildPaging(string pagingId, string jsHandler, int totalPage)
+        {
+            if (totalPage > 1)
+            {
+                string paing_template = "<ul id='" + pagingId + "' class='pgGrid'>{0}</ul>";
+                string item_template = "<li><a {1} onclick='" + jsHandler + "(this,{2})'>{0}</a></li>";
+                StringBuilder sbPaging = new StringBuilder();
+                for (int i = 0; i < totalPage; i++)
+                {
+                    if (i == 0)
+                    {
+                        sbPaging.Append(string.Format(item_template, i + 1, "class='selected'", i + 1));
+                    }
+                    else
+                    {
+                        sbPaging.Append(string.Format(item_template, i + 1, "", i + 1));
+                    }
+                }
+                string paging = string.Format(paing_template, sbPaging.ToString());
+                return paging;
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }

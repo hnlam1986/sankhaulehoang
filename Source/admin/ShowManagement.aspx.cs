@@ -16,21 +16,34 @@ namespace TheGioiSanKhau.admin
         {
             DataSet ds = DataAccessLayer.ExecuteDataSet("Show_GetAllShow", null);
             StringBuilder sb = new StringBuilder();
-            sb.Append("<table class='custom-table' id='tblAdv'>");
-            sb.Append("<thead><tr>");
-            sb.Append(@"<td>Anh</td>
+            
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                int index = 0;
+                int page_index = 0;
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    if (index == 0)
+                    {
+                        page_index++;
+                        if (page_index > 1)
+                        {
+                            sb.Append("<table class='custom-table' id='tblAdv' data-paging='" + page_index + "' style='display:none'>");
+                        }
+                        else
+                        {
+                            sb.Append("<table class='custom-table' id='tblAdv' data-paging='" + page_index + "'>");
+                        }
+                        sb.Append("<thead><tr>");
+                        sb.Append(@"<td>Anh</td>
                         <td>Chuong trinh</td>
                         <td>Ngay dien</td>
                         <td>Gio</td>
                         <td>Gia ve</td>
                         <td>Link</td>
                         <td></td>");
-            sb.Append("</tr></thead><tbody>");
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-
-                foreach (DataRow dr in ds.Tables[0].Rows)
-                {
+                        sb.Append("</tr></thead><tbody>");
+                    }
                     string id = dr["ShowID"].ToString();
                     string imgPath = dr["AdvImagePath"].ToString();
                     string name = dr["ShowName"].ToString();
@@ -41,12 +54,25 @@ namespace TheGioiSanKhau.admin
                     string url = dr["LinkURL"].ToString();
                     string template = Utilities.GetTempleShowItem();
                     sb.AppendLine(string.Format(template, imgPath, fromdate, url, id,name,gio, gia));
-
+                    index++;
+                    if (index == 10)
+                    {
+                        sb.Append("</tbody></table>");
+                        index = 0;
+                    }
+                    
                 }
-
+                if (index < 10 && index > 0)
+                {
+                    sb.Append("</tbody></table>");
+                    index = 0;
+                }
+                divAdv.InnerHtml = sb.ToString();
+                //build paging tool
+                
+                divPaging.InnerHtml = Utilities.BuildPaging("pgShow","AdvertisingManagementEvent.SelectedPage",page_index);
             }
-            sb.Append("</tbody></table>");
-            divAdv.InnerHtml = sb.ToString();
+            
         }
     }
 }

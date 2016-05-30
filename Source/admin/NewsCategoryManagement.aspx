@@ -21,6 +21,7 @@
         <div class="ListNewsFrame" id="NewsListFrame">
             
         </div>
+        <div id="pgNews"></div>
     </div>
     <div id="dialog-modal" title="Basic modal dialog">
 </div>

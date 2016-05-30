@@ -7,7 +7,7 @@
                 <asp:Repeater ID="Repeater1" runat="server">
                     <ItemTemplate>
                         <li><a href="<%#Eval("LinkURL")%>">
-                            <img style="width: 960px" src="/AdvImage/<%#Eval("AdvImagePath")%>" />
+                            <img style="width: 952px" src="/AdvImage/<%#Eval("AdvImagePath")%>" />
                         </a></li>
                     </ItemTemplate>
                 </asp:Repeater>

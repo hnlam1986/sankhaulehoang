@@ -116,5 +116,11 @@
                 }
             });
         }
+    },
+    SelectedPage: function (btn, page) {
+        $(".custom-table").hide();
+        $(".custom-table[data-paging=" + page + "]").show();
+        $(".pgGrid li a").removeClass("selected");
+        $(btn).addClass("selected");
     }
 }

@@ -89,6 +89,8 @@
     <Content Include="admin\NewsManagement.aspx" />
     <Content Include="admin\Scripts\AdvertisingManagement.Event.js" />
     <Content Include="admin\Scripts\AlbumManagement.Event.js" />
+    <Content Include="admin\Scripts\lightbox.js" />
+    <Content Include="admin\Style\magnific-popup.css" />
     <Content Include="images\header.jpg" />
     <Content Include="images\nav-green.jpg" />
     <Content Include="images\nav-green.png" />
